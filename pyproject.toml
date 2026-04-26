@@ -1,0 +1,31 @@
+[project]
+name = "shamba-api"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "bagoviggo",email = "bagoviggo@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi (==0.115.5)",
+    "uvicorn[standard] (>=0.41.0,<0.42.0)",
+    "sqlalchemy[asyncio] (>=2.0.48,<3.0.0)",
+    "asyncpg (==0.30.0)",
+    "alembic (==1.14.0)",
+    "redis (==5.2.0)",
+    "httpx (==0.28.0)",
+    "beautifulsoup4 (==4.12.3)",
+    "lxml (==5.3.0)",
+    "apscheduler (==3.10.4)",
+    "python-dotenv (==1.0.1)",
+    "pydantic (==2.10.3)",
+    "pydantic-settings (==2.6.1)",
+    "anthropic (==0.40.0)",
+    "psycopg2-binary (==2.9.10)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
