@@ -1,4 +1,5 @@
 from pydantic_settings import BaseSettings
+from pydantic import validator
 from functools import lru_cache
 
 
@@ -8,6 +9,10 @@ class Settings(BaseSettings):
     anthropic_api_key: str = ""
     kamis_base_url: str = "https://kamis.kilimo.go.ke"
     environment: str = "development"
+
+    @validator("database_url", pre=True)
+    def fix_db_url(cls, v):
+        return v.replace("postgresql://", "postgresql+asyncpg://")
 
     # Scraper settings
     scraper_entries_per_page: int = 3000

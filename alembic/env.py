@@ -18,6 +18,7 @@ if config.config_file_name is not None:
 from dotenv import load_dotenv
 load_dotenv()
 database_url = os.getenv("DATABASE_URL", "postgresql+asyncpg://shamba:shamba@localhost/shamba")
+database_url = database_url.replace("postgresql://", "postgresql+asyncpg://")
 config.set_main_option("sqlalchemy.url", database_url)
 
 # Import models so Alembic can detect schema changes
