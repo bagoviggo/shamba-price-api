@@ -183,6 +183,11 @@ async def run_scrape(session: AsyncSession) -> dict:
                         html    = await fetch_page(client, offset=offset, product_id=product_id)
                         records = parse_table(html)
                         logger.info("  product=%d offset=%d rows=%d", product_id, offset, len(records))
+
+                        if records and all(r["recorded_date"].year < 2024 for r in records):
+                            logger.info("Reached pre-2024 data at product=%d offset=%d — stopping", product_id, offset)
+                            break
+                        records = [r for r in records if r["recorded_date"].year >= 2024]
                     except Exception as e:
                         msg = f"Fetch error product={product_id} offset={offset}: {e}"
                         logger.error(msg)

@@ -57,10 +57,7 @@ app = FastAPI(
 # CORS — allow Next.js frontend (and all origins in dev)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"] if settings.environment == "development" else [
-        "https://shamba.ai",
-        "https://www.shamba.ai",
-    ],
+    allow_origins=["*"]
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
